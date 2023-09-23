@@ -31,10 +31,19 @@
         <Button Height="100"
                 Width="100"
                 Content="Send"
-                FontSize="28" Margin="1490,774,10,10"/>
+                FontSize="28" Margin="1490,774,10,10"
+                Command="{Binding SendMessageCommand, UpdateSourceTrigger =PropertyChanged}"/>
         <TextBox Height="100"
-                 Width="1100" Margin="357,774,143,10"/>
-        <ListView Height="700"
-                  Width="1250" Margin="340,35,10,149"/>
+                 Width="1100" Margin="357,774,143,10"
+                 Text ="{Binding Message}"/>
+        <ListView Height="700" Margin="10,174,1290,10"
+                  ItemsSource="{Binding Users}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Username}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView Margin="322,0,10,133" ItemsSource="{Binding Messages}"/>
     </Grid>
 </Window>
