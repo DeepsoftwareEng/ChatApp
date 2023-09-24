@@ -20,7 +20,7 @@ namespace ChatServer.Net.IO
             var length = ReadInt32();
             msgBuffer = new byte[length];
             ns.Read(msgBuffer, 0, length);
-            var msg = Encoding.Unicode.GetString(msgBuffer);
+            var msg = Encoding.ASCII.GetString(msgBuffer);
             return msg;
         }
     }

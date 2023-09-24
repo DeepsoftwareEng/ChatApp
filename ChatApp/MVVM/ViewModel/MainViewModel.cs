@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -29,7 +30,7 @@ namespace ChatApp.MVVM.ViewModel
             _server.msgReceiveEvent += msgReceive;
             _server.disconnectEvent += disconnect;
             ConnectToServerCommand = new RelayCommand(p => _server.ConnectToServer(Username));
-            SendMessageCommand = new RelayCommand(p => _server.SendMessageToServer(Message), p=> !string.IsNullOrEmpty(Message));
+            SendMessageCommand = new RelayCommand(p => _server.SendMessageToServer(Message));
         }
 
         private void disconnect()
@@ -42,6 +43,7 @@ namespace ChatApp.MVVM.ViewModel
         private void msgReceive()
         {
             var msg = _server.packetReader.ReadMessage();
+            //var username = Users.Where(x => x.UID == uid).FirstOrDefault();
             Application.Current.Dispatcher.Invoke(() => Messages.Add(msg));
         }
 

@@ -36,7 +36,7 @@ namespace ChatServer
                         case 5:
                             var msg = packetReaader.ReadMessage();
                             Console.WriteLine($"{DateTime.Now}: Message Receive:{msg}");
-                            Program.BroadcastMessage( msg );
+                            Program.BroadcastMessage($"[{DateTime.Now}]:[{Username}]: "+msg );
                             break;
                         default:
                             break;

@@ -25,7 +25,7 @@ namespace ChatApp.Net.IO
         {
             var msgLength = msg.Length;
             ms.Write(BitConverter.GetBytes(msgLength));
-            ms.Write(Encoding.Unicode.GetBytes(msg));
+            ms.Write(Encoding.ASCII.GetBytes(msg));
         }
         public byte[] GetPacketByte()
         {
